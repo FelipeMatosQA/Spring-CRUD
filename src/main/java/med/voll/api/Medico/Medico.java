@@ -1,6 +1,7 @@
 package med.voll.api.Medico;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class Medico {
     private Long id;
     private String nome;
     private String email;
+    @Digits(integer = 11, fraction = 0)
     private String telefone;
     private String crm;
 
@@ -35,5 +37,17 @@ public class Medico {
         this.nome = dados.nome();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
+    }
+
+    public void atualizarInformacoes(DadosAlteracaoMedico dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+        if (dados.telefone() != null) {
+            this.telefone = dados.telefone();
+        }
     }
 }

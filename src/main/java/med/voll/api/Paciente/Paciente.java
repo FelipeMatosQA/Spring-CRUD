@@ -2,6 +2,7 @@ package med.voll.api.Paciente;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,12 +25,15 @@ public class Paciente {
     private String cpf;
     @Embedded
     private Endereco endereco;
+    @Digits(integer = 11, fraction = 0)
+    private String telefone;
 
     public Paciente(DadosCadastroPaciente dados){
         this.nome = dados.nome();
         this.email = dados.email();
         this.cpf = dados.cpf();
         this.endereco = new Endereco(dados.endereco());
+        this.telefone = dados.telefone();
     }
 
 
