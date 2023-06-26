@@ -24,13 +24,17 @@ public class Medico {
     private String telefone;
     private String crm;
 
+
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
     @Embedded
     private Endereco endereco;
 
+
+
     public Medico(DadosCadastroMedico dados) {
+
         this.crm = dados.crm();
         this.email = dados.email();
         this.telefone = dados.telefone();
