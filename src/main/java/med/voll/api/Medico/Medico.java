@@ -2,6 +2,7 @@ package med.voll.api.Medico;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class Medico {
     private Long id;
     private String nome;
     private String email;
-    @Digits(integer = 11, fraction = 0)
+    @Digits(integer = 20, fraction = 0)
     private String telefone;
     private String crm;
     private Boolean situacao;
