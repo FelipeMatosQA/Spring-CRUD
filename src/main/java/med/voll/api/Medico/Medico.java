@@ -23,7 +23,7 @@ public class Medico {
     @Digits(integer = 11, fraction = 0)
     private String telefone;
     private String crm;
-
+    private Boolean situacao;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
@@ -34,7 +34,7 @@ public class Medico {
 
 
     public Medico(DadosCadastroMedico dados) {
-
+        this.situacao = true;
         this.crm = dados.crm();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -53,5 +53,9 @@ public class Medico {
         if (dados.telefone() != null) {
             this.telefone = dados.telefone();
         }
+    }
+
+    public void excluir() {
+        this.situacao = false;
     }
 }

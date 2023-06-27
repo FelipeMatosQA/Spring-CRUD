@@ -1,11 +1,14 @@
 package med.voll.api.Paciente;
 
-public record DadosListagemPaciente(
-        String nome,
-        String email,
-        String telefone) {
+import med.voll.api.Endereco.Endereco;
+
+public record DadosListagemPaciente(Long id,
+                                    String nome,
+                                    String email,
+                                    String telefone,
+                                    Endereco endereco) {
 
     public DadosListagemPaciente(Paciente paciente){
-        this(paciente.getNome(), paciente.getEmail(), paciente.getTelefone());
+        this(paciente.getId(), paciente.getNome(), paciente.getEmail(), paciente.getTelefone(), paciente.getEndereco());
     }
 }
