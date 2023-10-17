@@ -2,17 +2,14 @@ package med.voll.api.Controller;
 
 
 import jakarta.validation.Valid;
-import med.voll.api.Medico.*;
+import med.voll.api.Domain.Medico.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")//Aponta qual será o endpoint de acesso à classe
@@ -47,7 +44,6 @@ public class MedicosController {
         return ResponseEntity.ok(new DadosListagemMedico(medico));
     }
 
-
     @PutMapping
     @Transactional
     public ResponseEntity atualizar(@RequestBody @Valid DadosAlteracaoMedico dados) {
@@ -64,7 +60,5 @@ public class MedicosController {
         medico.excluir();
         return ResponseEntity.noContent().build();
     }
-
-
 }
 
