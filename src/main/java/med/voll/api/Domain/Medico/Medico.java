@@ -1,4 +1,4 @@
-package med.voll.api.Medico;
+package med.voll.api.Domain.Medico;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.Endereco.Endereco;
+import med.voll.api.Domain.Endereco.Endereco;
 
 @Table(name ="medicos")
 @Entity(name ="Medico")
@@ -20,9 +20,10 @@ public class Medico {
     private Long id;
     private String nome;
     private String email;
-    @Digits(integer = 11, fraction = 0)
+    @Digits(integer = 20, fraction = 0)
     private String telefone;
     private String crm;
+    private Boolean situacao;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
@@ -30,7 +31,10 @@ public class Medico {
     @Embedded
     private Endereco endereco;
 
+
+
     public Medico(DadosCadastroMedico dados) {
+        this.situacao = true;
         this.crm = dados.crm();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -49,5 +53,9 @@ public class Medico {
         if (dados.telefone() != null) {
             this.telefone = dados.telefone();
         }
+    }
+
+    public void excluir() {
+        this.situacao = false;
     }
 }

@@ -1,0 +1,3 @@
+ALTER TABLE medicos ADD situacao CHAR(1);
+UPDATE MEDICOS SET situacao = 'A';
+ALTER TABLE medicos MODIFY COLUMN situacao CHAR(1) NOT NULL DEFAULT 'A';
